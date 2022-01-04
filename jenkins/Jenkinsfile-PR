@@ -60,11 +60,13 @@ pipeline {
                         script {
                             if ("${env.exit_code}" != "0") {
                                 currentBuild.result = "UNSTABLE"
+                                
+                                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                                    sh "exit 1"
+                                }
                             }
                         }
-                        catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                            sh "exit 1"
-                        }
+
                     }
                 }
                 stage('Push image') {
