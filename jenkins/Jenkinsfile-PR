@@ -62,6 +62,9 @@ pipeline {
                                 currentBuild.result = "UNSTABLE"
                             }
                         }
+                        catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                            sh "exit 1"
+                        }
                     }
                 }
                 stage('Push image') {
