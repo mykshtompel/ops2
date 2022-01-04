@@ -14,10 +14,6 @@ pipeline {
                 git_com = sh(returnStdout: true, script: 'git rev-parse --short=12 HEAD').trim()
             }
 
-            options {
-                ansiColor('xterm')
-            }
-
             stages {
                 stage('Build PR') {
                     when {
