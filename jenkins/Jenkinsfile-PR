@@ -66,9 +66,8 @@ pipeline {
                 }
                 stage('Push image') {
                     when {
-                        allOf {
-                            tag ''
-                            expression { env.exit_code == "0" }}                        
+                        tag ''
+                        expression { env.exit_code == "0" }                        
                     }
                     steps {
                         
