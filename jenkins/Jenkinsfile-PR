@@ -46,7 +46,7 @@ pipeline {
                 }
                 stage('Run Test') {
                     steps {
-                        sh 'echo "0" > jenkins/exit_code'
+                        sh 'echo "10" > jenkins/exit_code'
                         script {
                             env.exit_code = sh(returnStdout: true, script: 'cat jenkins/exit_code').trim()
                         }
